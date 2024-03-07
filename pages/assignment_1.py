@@ -68,7 +68,7 @@ def trained_sentence_vec(sent):
 def find_answer(qr_sentence, ques_vec, ans_vec):
     # use one query sentence to retrieve answer
     qr_sentence = gensim.utils.simple_preprocess(qr_sentence)
-    qr_sentence = token(qr_sentence)
+    #qr_sentence = token(qr_sentence)
     qr_sent_vec = trained_sentence_vec(qr_sentence)
 
     # perform vector search through similarity comparison
@@ -83,7 +83,7 @@ def find_answer(qr_sentence, ques_vec, ans_vec):
     # reshape qr_sent_vec
     q = qr_sent_vec.reshape(1, -1)
     # build the faiss index, n_dim=size of vectors using faiss.index_factory with METRIC_INNER_PRODUCT parameter
-    index = index = faiss.index_factory(n_dim, "Flat", faiss.METRIC_INNER_PRODUCT)
+    index = faiss.index_factory(n_dim, "Flat", faiss.METRIC_INNER_PRODUCT)
 	
     # add all questions into the faiss index
     faiss.normalize_L2(x)
