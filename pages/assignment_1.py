@@ -118,7 +118,7 @@ if prompt := st.chat_input("What's your question?"):
 if st.session_state.messages[-1]["role"] != "assistant":
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
-            ans_idx = find_answer(prompt, ques_vec)
+            ans_idx = find_answer(prompt, ques_vec, ans_vec)
             response = df["Answer"][ans_idx]
             st.write(response)
             
