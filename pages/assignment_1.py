@@ -20,13 +20,13 @@ import numpy as np
 df = pd.read_csv("data/Question_Answer_Dataset_v1.2_S10.csv")
 
 # load question and answer vectors generated from pre-trained word2vec model
-vector = np.load('data/vector.npz')
+vector = np.load('data/vector1.npz')
 ques_vec = vector['x']
 ans_vec = vector['y']
 
 # load th trained word2vec model 
 # Hint: You should use the word2vec model pre-trained with both question and answer sets.
-trained_w2v = gensim.models.Word2Vec.load("data/w2v.model")
+trained_w2v = gensim.models.Word2Vec.load("data/w2v-adnvance.model")
 
 # App title
 st.set_page_config(page_title="Word2vec Question and Answer Chatbot")
@@ -68,7 +68,7 @@ def trained_sentence_vec(sent):
 def find_answer(qr_sentence, ques_vec, ans_vec):
     # use one query sentence to retrieve answer
     qr_sentence = gensim.utils.simple_preprocess(qr_sentence)
-    #qr_sentence = token(qr_sentence)
+    # Proceed with generating the vector for the processed question sentence
     qr_sent_vec = trained_sentence_vec(qr_sentence)
 
     # perform vector search through similarity comparison
